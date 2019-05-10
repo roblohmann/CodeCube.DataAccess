@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CodeCube.DataAccess.EntityFramework</id>
-    <version>1.0.3.4</version>
+    <version>1.0.3.5</version>
     <authors>Rob Lohmann</authors>
     <owners>Rob Lohmann</owners>
     <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
@@ -11,7 +11,7 @@
     <description>
       Package containg generic database access technology using Entity Framework
     </description>
-    <copyright>2013 - 2017 Rob Lohmann</copyright>
+    <copyright>2013 - 2019 Rob Lohmann</copyright>
     <tags>codecube entityframework entity framework</tags>
     <dependencies>
       <dependency id="CodeCube.Core" version="1.0.0.0" />

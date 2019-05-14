@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="ApplicationDataContext.cs" />
     <Compile Include="BaseEntityTypeConfiguration.cs" />
-    <Compile Include="GenericRepository.cs" />
     <Compile Include="Interfaces\IApplicationDataContext.cs" />
     <Compile Include="Interfaces\IBaseEntity.cs" />
     <Compile Include="Interfaces\IChangeTracker.cs" />

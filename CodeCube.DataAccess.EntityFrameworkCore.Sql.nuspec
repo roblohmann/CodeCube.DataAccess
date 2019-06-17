@@ -2,23 +2,23 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CodeCube.DataAccess.EntityFramework</id>
-    <version>1.0.4.1</version>
+    <version>1.0.0</version>
     <authors>Rob Lohmann</authors>
     <owners>Rob Lohmann</owners>
     <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
     <projectUrl>https://github.com/roblohmann/CodeCube.DataAccess</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Package containing generic database access technology using Entity Framework</description>
-    <copyright>2013 - 2019 Rob Lohmann</copyright>
+    <description>
+      Package containing generic database access technology using Entity Framework Core with SQL Server
+    </description>
+    <copyright>2019 Rob Lohmann</copyright>
     <tags>codecube entityframework entity framework</tags>
     <dependencies>
-      <dependency id="CodeCube.Core" version="1.0.0.0" />
-
-      <dependency id="Entityframework" version="6.2.0" />
+      <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="2.2.4" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\CodeCube.DataAccess.EntityFramework.dll" target="lib\net45\CodeCube.DataAccess.EntityFramework.dll"/>
-    <file src="bin\Release\CodeCube.DataAccess.EntityFramework.xml" target="lib\net45\CodeCube.DataAccess.EntityFramework.xml"/>
+    <file src="bin\Release\CodeCube.DataAccess.EntityFramework.dll" target="lib\net45\CodeCube.DataAccess.EntityFrameworkCore.Sql.dll"/>
+    <file src="bin\Release\CodeCube.DataAccess.EntityFramework.xml" target="lib\net45\CodeCube.DataAccess.EntityFrameworkCore.Sql.xml"/>
   </files>
 </package>

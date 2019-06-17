@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,6 +7,7 @@
     <Description>Package containing generic functionality to access databases using Microsoft EntityframeworkCore with SQL-server</Description>
     <Copyright>Copyright 2019 Rob Lohmann</Copyright>
     <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
+    <PackageId>CodeCube.DataAccess.EntityFrameworkCore.Sql</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

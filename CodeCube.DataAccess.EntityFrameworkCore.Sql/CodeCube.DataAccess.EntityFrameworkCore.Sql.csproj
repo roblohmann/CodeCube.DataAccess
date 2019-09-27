@@ -8,6 +8,8 @@
     <Copyright>Copyright 2019 Rob Lohmann</Copyright>
     <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
     <PackageId>CodeCube.DataAccess.EntityFrameworkCore.Sql</PackageId>
+    <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
+    <RepositoryUrl>https://github.com/roblohmann/CodeCube.DataAccess</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

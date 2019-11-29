@@ -12,6 +12,14 @@
     <RepositoryUrl>https://github.com/roblohmann/CodeCube.DataAccess</RepositoryUrl>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Projects Prive\GitHub\CodeCube.DataAccess\CodeCube.DataAccess.EntityFrameworkCore.Sql\CodeCube.DataAccess.EntityFrameworkCore.Sql.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Projects Prive\GitHub\CodeCube.DataAccess\CodeCube.DataAccess.EntityFrameworkCore.Sql\CodeCube.DataAccess.EntityFrameworkCore.Sql.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.0.1" />

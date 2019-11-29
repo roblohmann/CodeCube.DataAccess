@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using CodeCube.DataAccess.EntityFrameworkCore.Sql.Constants;
 using CodeCube.DataAccess.EntityFrameworkCore.Sql.Context;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +16,13 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
         /// <returns> An instance of ApplicationDbContext.</returns>
         public T CreateDbContext(string[] args)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                    //.SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json")
+            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            IConfiguration configuration = new ConfigurationBuilder()
+                    .SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .AddJsonFile($"appsettings.{environment}.json", optional: true)
+                    .AddEnvironmentVariables()
                     .Build();
 
             var connectionString = configuration.GetConnectionString("DatabaseConnection");
@@ -27,14 +32,13 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
                 throw new KeyNotFoundException(ErrorConstants.MissingConnectionstring);
             }
 
-            return CreateDbContext(connectionString, args);
+            return CreateDbContext(connectionString);
         }
 
         /// <summary>Creates a new instance of a derived context.</summary>
         /// <param name="connectionstring">The connectionstring to the database.</param>
-        /// <param name="args"> Arguments provided by the design-time service. </param>
         /// <returns> An instance of ApplicationDbContext.</returns>
-        public T CreateDbContext(string connectionstring, string[] args)
+        public T CreateDbContext(string connectionstring)
         {
             if (string.IsNullOrWhiteSpace(connectionstring))
             {

@@ -4,7 +4,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace CodeCube.DataAccess.EntityFramework.Interfaces
 {
-    public interface IApplicationDataContext : IDisposable
+    public interface IApplicationDbContext : IDisposable
     {
         /// <summary>
         /// Returns a DbSet instance for access to entities of the given type

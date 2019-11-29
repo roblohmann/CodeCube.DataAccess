@@ -19,7 +19,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\CodeCube.DataAccess.EntityFramework.dll" target="lib\net45\CodeCube.DataAccess.EntityFramework.dll"/>
-    <file src="bin\Release\CodeCube.DataAccess.EntityFramework.xml" target="lib\net45\CodeCube.DataAccess.EntityFramework.xml"/>
+    <file src="CodeCube.DataAccess.EntityFramework\bin\Release\CodeCube.DataAccess.EntityFramework.dll" target="lib\net472\CodeCube.DataAccess.EntityFramework.dll"/>
+    <file src="CodeCube.DataAccess.EntityFramework\bin\Release\CodeCube.DataAccess.EntityFramework.xml" target="lib\net472\CodeCube.DataAccess.EntityFramework.xml"/>
   </files>
 </package>

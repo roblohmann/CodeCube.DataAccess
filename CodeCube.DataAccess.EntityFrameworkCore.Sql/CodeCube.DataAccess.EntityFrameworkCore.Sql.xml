@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeCube.DataAccess.EntityFrameworkCore.Sql</name>
+    </assembly>
+    <members>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory.DesignTimeDbContextFactory`1.CreateDbContext(System.String[])">
+            <summary>Creates a new instance of a derived context.</summary>
+            <param name="args"> Arguments provided by the design-time service. </param>
+            <returns> An instance of ApplicationDbContext.</returns>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory.DesignTimeDbContextFactory`1.CreateDbContext(System.String)">
+            <summary>Creates a new instance of a derived context.</summary>
+            <param name="connectionstring">The connectionstring to the database.</param>
+            <returns> An instance of ApplicationDbContext.</returns>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.RemoveById``1(System.Guid)">
+            <summary>
+            Deletes the entity with the specified id.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="id"></param>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+                Override this method to further configure the model that was discovered by convention from the entity types
+                exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties on your derived context. The resulting model may be cached
+                and re-used for subsequent instances of your derived context.
+            </summary>
+            <remarks>
+                If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
+                then this method will not be run.
+                When overridden, don't forget to call base.OnModelCreating if you want the softdelete to keep working.
+            </remarks>
+            <param name="modelBuilder">
+                The builder being used to construct the model for this context. Databases (and other extensions) typically
+                define extension methods on this object that allow you to configure aspects of the model that are specific
+                to a given database.
+            </param>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.Id">
+            <summary>
+            The primary key. Unique for all objects.
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.CreatedOn">
+            <summary>
+            When was the object created.
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.CreatedBy">
+            <summary>
+            Who created the object?
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.UpdatedOn">
+            <summary>
+            When was the object last changed?
+            <remarks>Can be NULL if no changes has been made yet.</remarks>
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.UpdatedBy">
+            <summary>
+            Who last changed the object?
+            <remarks>Can be NULL if no changes has been made yet.</remarks>
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.IsDeleted">
+            <summary>
+            Is the object in a deleted state?
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.DeletedOn">
+            <summary>
+            When was the object deleted?
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.DeletedBy">
+            <summary>
+            Who did the delete action on this object?
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.RowVersion">
+            <summary>
+            Used to prevent concurrency exceptions.
+            </summary>
+        </member>
+        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.DbContextExtension">
+            <summary>
+            Class for DbContext extensions
+            </summary>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.DbContextExtension.AllMigrationsApplied(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            Are all available migrations applied to this DbContext?
+            </summary>
+            <param name="dbContext">The DbContext.</param>
+            <returns>True if all migrations are applied, otherwise false.</returns>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.EntityFrameworkFilterExtensions.SetSoftDeleteFilter(Microsoft.EntityFrameworkCore.ModelBuilder,System.Type)">
+            <summary>
+            
+            </summary>
+            <seealso cref="!:https://stackoverflow.com/a/45097532/291293"/>
+            <param name="modelBuilder"></param>
+            <param name="entityType"></param>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.EntityFrameworkFilterExtensions.SetSoftDeleteFilter``1(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <seealso cref="!:https://stackoverflow.com/a/45097532/291293"/>
+            <typeparam name="TEntity"></typeparam>
+            <param name="modelBuilder"></param>
+        </member>
+    </members>
+</doc>

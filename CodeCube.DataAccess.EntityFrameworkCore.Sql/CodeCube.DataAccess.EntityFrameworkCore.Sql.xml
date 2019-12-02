@@ -97,7 +97,7 @@
             <param name="dbContext">The DbContext.</param>
             <returns>True if all migrations are applied, otherwise false.</returns>
         </member>
-        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.EntityFrameworkFilterExtensions.SetSoftDeleteFilter(Microsoft.EntityFrameworkCore.ModelBuilder,System.Type)">
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.ModelBuilderExtensions.SetSoftDeleteFilter(Microsoft.EntityFrameworkCore.ModelBuilder,System.Type)">
             <summary>
             
             </summary>
@@ -105,7 +105,7 @@
             <param name="modelBuilder"></param>
             <param name="entityType"></param>
         </member>
-        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.EntityFrameworkFilterExtensions.SetSoftDeleteFilter``1(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.ModelBuilderExtensions.SetSoftDeleteFilter``1(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             
             </summary>

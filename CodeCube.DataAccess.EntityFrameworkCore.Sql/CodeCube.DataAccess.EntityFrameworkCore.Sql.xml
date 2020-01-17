@@ -97,21 +97,29 @@
             <param name="dbContext">The DbContext.</param>
             <returns>True if all migrations are applied, otherwise false.</returns>
         </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.ModelBuilderExtensions.SetQueryFilterOnAllEntities``1(Microsoft.EntityFrameworkCore.ModelBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Apply the specified expression for the matching interface on all entities
+            </summary>
+            <param name="builder"></param>
+            <param name="filterExpression">The filter expression to apply.</param>
+            <typeparam name="TEntityInterface"></typeparam>
+        </member>
         <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.ModelBuilderExtensions.SetSoftDeleteFilter(Microsoft.EntityFrameworkCore.ModelBuilder,System.Type)">
             <summary>
             
             </summary>
-            <seealso cref="!:https://stackoverflow.com/a/45097532/291293"/>
             <param name="modelBuilder"></param>
             <param name="entityType"></param>
+            <remarks>This code has been kindly borrowed from https://stackoverflow.com/a/45097532/291293</remarks>
         </member>
         <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions.ModelBuilderExtensions.SetSoftDeleteFilter``1(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             
             </summary>
-            <seealso cref="!:https://stackoverflow.com/a/45097532/291293"/>
             <typeparam name="TEntity"></typeparam>
             <param name="modelBuilder"></param>
+            <remarks>This code has been kindly borrowed from https://stackoverflow.com/a/45097532/291293</remarks>
         </member>
     </members>
 </doc>

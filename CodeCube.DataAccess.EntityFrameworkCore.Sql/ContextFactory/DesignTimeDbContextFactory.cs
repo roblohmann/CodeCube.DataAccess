@@ -6,24 +6,26 @@ using CodeCube.DataAccess.EntityFrameworkCore.Sql.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
 {
-    public abstract class DesignTimeDbContextFactory<T> : IDesignTimeDbContextFactory<T> where T : DbContext
+    /// <summary>
+    ///     A factory for creating derived <see cref="T:Microsoft.EntityFrameworkCore.DbContext" /> instances. Inherit you context from this class to enable
+    ///     design-time services for context types that do not have a public default constructor. At design-time,
+    ///     derived <see cref="T:Microsoft.EntityFrameworkCore.DbContext" /> instances can be created in order to enable specific design-time
+    ///     experiences such as Migrations. Design-time services will automatically discover implementations of
+    ///     this interface that are in the startup assembly or the same assembly as the derived context.
+    /// </summary>
+    /// <typeparam name="TContext">The type of the context.</typeparam>
+    public abstract class DesignTimeDbContextFactory<TContext> : IDesignTimeDbContextFactory<TContext> where TContext : DbContext
     {
         /// <summary>Creates a new instance of a derived context.</summary>
         /// <param name="args"> Arguments provided by the design-time service. </param>
         /// <returns> An instance of ApplicationDbContext.</returns>
-        public T CreateDbContext(string[] args)
+        public TContext CreateDbContext(string[] args)
         {
-            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-            IConfiguration configuration = new ConfigurationBuilder()
-                    .SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
-                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                    .AddJsonFile($"appsettings.{environment}.json", optional: true)
-                    .AddEnvironmentVariables()
-                    .Build();
+            IConfiguration configuration = GetAppConfiguration();
 
             var connectionString = configuration.GetConnectionString("DatabaseConnection");
 
@@ -38,7 +40,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
         /// <summary>Creates a new instance of a derived context.</summary>
         /// <param name="connectionstring">The connectionstring to the database.</param>
         /// <returns> An instance of ApplicationDbContext.</returns>
-        public T CreateDbContext(string connectionstring)
+        public TContext CreateDbContext(string connectionstring)
         {
             if (string.IsNullOrWhiteSpace(connectionstring))
             {
@@ -48,9 +50,45 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             builder.UseSqlServer(connectionstring);
 
-            var dbContext = (T)Activator.CreateInstance(typeof(T),builder.Options);
+            var dbContext = (TContext)Activator.CreateInstance(typeof(TContext), builder.Options);
 
             return dbContext;
         }
+
+        #region privates
+        private static IConfiguration GetAppConfiguration()
+        {
+            var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            DirectoryInfo dir = Directory.GetParent(AppContext.BaseDirectory);
+            if (dir == null) throw new InvalidOperationException(ErrorConstants.AppSettingsBaseDirectoryNotFound);
+
+            if (Environments.Development.Equals(environmentName, StringComparison.OrdinalIgnoreCase))
+            {
+                var depth = 0;
+                do
+                {
+                    dir = dir.Parent;
+                }
+                while (++depth < 5 && dir.Name != "bin");
+
+                {
+                    dir = dir.Parent;
+                }
+            }
+
+            if (dir == null) throw new InvalidOperationException(ErrorConstants.AppSettingsBaseDirectoryNotFoundRecursively);
+
+            var path = dir.FullName;
+
+            var builder = new ConfigurationBuilder()
+                    .SetBasePath(path)
+                    .AddJsonFile("appsettings.json")
+                    .AddJsonFile($"appsettings.{environmentName}.json", true)
+                    .AddEnvironmentVariables();
+
+            return builder.Build();
+        }
+        #endregion
     }
 }

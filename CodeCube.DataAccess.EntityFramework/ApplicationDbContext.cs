@@ -53,39 +53,36 @@ namespace CodeCube.DataAccess.EntityFramework
 
             foreach (var entry in modified)
             {
-                var changedOrAddedItem = entry.Entity as IChangeTracker;
-
-                if (changedOrAddedItem != null)
+                switch (entry.Entity)
                 {
-                    switch (entry.State)
-                    {
-                        case EntityState.Added:
-                            changedOrAddedItem.DateCreated = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
-                            changedOrAddedItem.DateModified = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
-                            break;
-                        case EntityState.Modified:
-                            changedOrAddedItem.DateModified = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
-                            break;
-                        case EntityState.Deleted:
-                            changedOrAddedItem.DateDeleted = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
-                            changedOrAddedItem.DateModified = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
+                    case IChangeTracker changedOrAddedItem:
+                        switch (entry.State)
+                        {
+                            case EntityState.Added:
+                                changedOrAddedItem.DateCreated = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
+                                changedOrAddedItem.DateModified = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
+                                break;
+                            case EntityState.Modified:
+                                changedOrAddedItem.DateModified = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
+                                break;
+                            case EntityState.Deleted:
+                                changedOrAddedItem.DateDeleted = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
+                                changedOrAddedItem.DateModified = DateTimeHelper.DateTimeNow(EDateTimeRegion.WesternEurope);
 
-                            //Call softdelete method
-                            SoftDelete(entry);
-                            break;
-                    }
-                }
-
-                var ipTrackedItem = entry.Entity as IIpTracking;
-                if (ipTrackedItem != null && !string.IsNullOrWhiteSpace(clientIpAddress))
-                {
-                    ipTrackedItem.IpAddress = clientIpAddress;
+                                //Call softdelete method
+                                SoftDelete(entry);
+                                break;
+                        }
+                        break;
+                    case IIpTracking ipTrackedItem when !string.IsNullOrWhiteSpace(clientIpAddress):
+                        ipTrackedItem.IpAddress = clientIpAddress;
+                        break;
                 }
             }
 
             try
             {
-                return SaveChanges();
+                return base.SaveChanges();
             }
             catch (DbUpdateException dex)
             {

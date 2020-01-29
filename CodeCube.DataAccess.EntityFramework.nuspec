@@ -7,10 +7,10 @@
     <owners>Rob Lohmann</owners>
     <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
     <projectUrl>https://github.com/roblohmann/CodeCube.DataAccess</projectUrl>
-    <icon>images\nuget-icon.png</icon>
+    <iconUrl>images\nuget-icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Package containing generic database access technology using Entity Framework</description>
-    <copyright>2013 - 2019 Rob Lohmann</copyright>
+    <copyright>2013 - 2020 Rob Lohmann</copyright>
     <tags>codecube entityframework entity framework</tags>
     <dependencies>
       <dependency id="CodeCube.Core" version="2.0.193241" />

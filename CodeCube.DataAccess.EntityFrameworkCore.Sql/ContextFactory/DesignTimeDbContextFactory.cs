@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using CodeCube.DataAccess.EntityFrameworkCore.Sql.Constants;
-using CodeCube.DataAccess.EntityFrameworkCore.Sql.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
 {
@@ -47,7 +44,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
                 throw new KeyNotFoundException(ErrorConstants.MissingConnectionstring);
             }
 
-            var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            var builder = new DbContextOptionsBuilder<TContext>();
             builder.UseSqlServer(connectionstring);
 
             var dbContext = (TContext)Activator.CreateInstance(typeof(TContext), builder.Options);
@@ -60,32 +57,10 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
         {
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-            DirectoryInfo dir = Directory.GetParent(AppContext.BaseDirectory);
-            if (dir == null) throw new InvalidOperationException(ErrorConstants.AppSettingsBaseDirectoryNotFound);
-
-            if (Environments.Development.Equals(environmentName, StringComparison.OrdinalIgnoreCase))
-            {
-                var depth = 0;
-                do
-                {
-                    dir = dir.Parent;
-                }
-                while (++depth < 5 && dir.Name != "bin");
-
-                {
-                    dir = dir.Parent;
-                }
-            }
-
-            if (dir == null) throw new InvalidOperationException(ErrorConstants.AppSettingsBaseDirectoryNotFoundRecursively);
-
-            var path = dir.FullName;
-
             var builder = new ConfigurationBuilder()
-                    .SetBasePath(path)
-                    .AddJsonFile("appsettings.json")
-                    .AddJsonFile($"appsettings.{environmentName}.json", true)
-                    .AddEnvironmentVariables();
+                    .SetBasePath(Environment.CurrentDirectory)
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .AddJsonFile($"appsettings.{environmentName}.json", optional: false, reloadOnChange: true);
 
             return builder.Build();
         }

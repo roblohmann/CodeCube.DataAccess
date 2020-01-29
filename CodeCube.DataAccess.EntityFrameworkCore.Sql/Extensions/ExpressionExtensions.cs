@@ -10,14 +10,13 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions
         // Given an expression for a method that takes in a single parameter (and
         // returns a bool), this method converts the parameter type of the parameter
         // from TSource to TTarget.
-        public static Expression<Func<TTarget, bool>> Convert<TSource, TTarget>(
-                this Expression<Func<TSource, bool>> root)
+        public static Expression<Func<TTarget, bool>> Convert<TSource, TTarget>(this Expression<Func<TSource, bool>> root)
         {
             var visitor = new ParameterTypeVisitor<TSource, TTarget>();
             return (Expression<Func<TTarget, bool>>)visitor.Visit(root);
         }
 
-        class ParameterTypeVisitor<TSource, TTarget> : ExpressionVisitor
+        private class ParameterTypeVisitor<TSource, TTarget> : ExpressionVisitor
         {
             private ReadOnlyCollection<ParameterExpression> _parameters;
 

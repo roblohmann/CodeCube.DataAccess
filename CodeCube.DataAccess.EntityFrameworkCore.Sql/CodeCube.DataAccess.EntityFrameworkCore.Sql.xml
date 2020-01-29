@@ -4,6 +4,16 @@
         <name>CodeCube.DataAccess.EntityFrameworkCore.Sql</name>
     </assembly>
     <members>
+        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory.DesignTimeDbContextFactory`1">
+            <summary>
+                A factory for creating derived <see cref="T:Microsoft.EntityFrameworkCore.DbContext" /> instances. Inherit you context from this class to enable
+                design-time services for context types that do not have a public default constructor. At design-time,
+                derived <see cref="T:Microsoft.EntityFrameworkCore.DbContext" /> instances can be created in order to enable specific design-time
+                experiences such as Migrations. Design-time services will automatically discover implementations of
+                this interface that are in the startup assembly or the same assembly as the derived context.
+            </summary>
+            <typeparam name="TContext">The type of the context.</typeparam>
+        </member>
         <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory.DesignTimeDbContextFactory`1.CreateDbContext(System.String[])">
             <summary>Creates a new instance of a derived context.</summary>
             <param name="args"> Arguments provided by the design-time service. </param>
@@ -14,12 +24,73 @@
             <param name="connectionstring">The connectionstring to the database.</param>
             <returns> An instance of ApplicationDbContext.</returns>
         </member>
+        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext">
+            <summary>
+            Inherit from this context to enable softdelete filtering.
+            </summary>
+        </member>
         <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.RemoveById``1(System.Guid)">
             <summary>
             Deletes the entity with the specified id.
             </summary>
             <typeparam name="TEntity"></typeparam>
             <param name="id"></param>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.SaveChanges">
+            <summary>
+                <para>
+                    Saves all changes made in this context to the database.
+                </para>
+                <para>
+                    This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
+                    changes to entity instances before saving to the underlying database. This can be disabled via
+                    <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
+                </para>
+            </summary>
+            <returns>
+                The number of state entries written to the database.
+            </returns>
+            <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateException">
+                An error is encountered while saving to the database.
+            </exception>
+            <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException">
+                A concurrency violation is encountered while saving to the database.
+                A concurrency violation occurs when an unexpected number of rows are affected during save.
+                This is usually because the data in the database has been modified since it was loaded into memory.
+            </exception>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+                <para>
+                    Saves all changes made in this context to the database.
+                </para>
+                <para>
+                    This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
+                    changes to entity instances before saving to the underlying database. This can be disabled via
+                    <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
+                </para>
+                <para>
+                    Multiple active operations on the same context instance are not supported.  Use 'await' to ensure
+                    that any asynchronous operations have completed before calling another method on this context.
+                </para>
+            </summary>
+            <param name="acceptAllChangesOnSuccess">
+                Indicates whether <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AcceptAllChanges" /> is called after the changes have
+                been sent successfully to the database.
+            </param>
+            <param name="cancellationToken"> A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete. </param>
+            <returns>
+                A task that represents the asynchronous save operation. The task result contains the
+                number of state entries written to the database.
+            </returns>
+            <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateException">
+                An error is encountered while saving to the database.
+            </exception>
+            <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException">
+                A concurrency violation is encountered while saving to the database.
+                A concurrency violation occurs when an unexpected number of rows are affected during save.
+                This is usually because the data in the database has been modified since it was loaded into memory.
+            </exception>
         </member>
         <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
@@ -41,43 +112,6 @@
         <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.Id">
             <summary>
             The primary key. Unique for all objects.
-            </summary>
-        </member>
-        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.CreatedOn">
-            <summary>
-            When was the object created.
-            </summary>
-        </member>
-        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.CreatedBy">
-            <summary>
-            Who created the object?
-            </summary>
-        </member>
-        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.UpdatedOn">
-            <summary>
-            When was the object last changed?
-            <remarks>Can be NULL if no changes has been made yet.</remarks>
-            </summary>
-        </member>
-        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.UpdatedBy">
-            <summary>
-            Who last changed the object?
-            <remarks>Can be NULL if no changes has been made yet.</remarks>
-            </summary>
-        </member>
-        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.IsDeleted">
-            <summary>
-            Is the object in a deleted state?
-            </summary>
-        </member>
-        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.DeletedOn">
-            <summary>
-            When was the object deleted?
-            </summary>
-        </member>
-        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.DeletedBy">
-            <summary>
-            Who did the delete action on this object?
             </summary>
         </member>
         <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities.BaseEntity.RowVersion">
@@ -120,6 +154,49 @@
             <typeparam name="TEntity"></typeparam>
             <param name="modelBuilder"></param>
             <remarks>This code has been kindly borrowed from https://stackoverflow.com/a/45097532/291293</remarks>
+        </member>
+        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces.IChangeTracking">
+            <summary>
+            Inherit your entities from this interface if you want to enable fields used for changetracking.
+            Eg. Createdby, CreatedOn, UpdatedBy and UpdatedOn
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces.IChangeTracking.CreatedOn">
+            <summary>
+            When was the object created.
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces.IChangeTracking.CreatedBy">
+            <summary>
+            Who created the object?
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces.IChangeTracking.UpdatedOn">
+            <summary>
+            When was the object last changed?
+            <remarks>Can be NULL if no changes has been made yet.</remarks>
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces.IChangeTracking.UpdatedBy">
+            <summary>
+            Who last changed the object?
+            <remarks>Can be NULL if no changes has been made yet.</remarks>
+            </summary>
+        </member>
+        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces.ISoftDelete">
+            <summary>
+            Inherit from this interface on your entity to add properties used for soft-deletion.
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces.ISoftDelete.IsDeleted">
+            <summary>
+            Is the object deleted or not?
+            </summary>
+        </member>
+        <member name="P:CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces.ISoftDelete.DeletedOn">
+            <summary>
+            When was the object deleted?
+            </summary>
         </member>
     </members>
 </doc>

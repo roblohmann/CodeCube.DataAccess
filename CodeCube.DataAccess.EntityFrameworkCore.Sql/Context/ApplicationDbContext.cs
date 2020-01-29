@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using CodeCube.DataAccess.EntityFrameworkCore.Sql.Constants;
 using CodeCube.DataAccess.EntityFrameworkCore.Sql.Entities;
 using CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions;
@@ -8,11 +10,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Context
 {
+    /// <summary>
+    /// Inherit from this context to enable softdelete filtering.
+    /// </summary>
     public abstract class ApplicationDbContext : DbContext
     {
         protected ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            
+
         }
 
         /// <summary>
@@ -24,6 +29,70 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Context
         {
             var objectToRemove = Find<TEntity>(id);
             Remove(objectToRemove);
+        }
+
+        /// <summary>
+        ///     <para>
+        ///         Saves all changes made in this context to the database.
+        ///     </para>
+        ///     <para>
+        ///         This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
+        ///         changes to entity instances before saving to the underlying database. This can be disabled via
+        ///         <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
+        ///     </para>
+        /// </summary>
+        /// <returns>
+        ///     The number of state entries written to the database.
+        /// </returns>
+        /// <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateException">
+        ///     An error is encountered while saving to the database.
+        /// </exception>
+        /// <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database.
+        ///     A concurrency violation occurs when an unexpected number of rows are affected during save.
+        ///     This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public override int SaveChanges()
+        {
+            SoftDelete();
+            return base.SaveChanges();
+        }
+
+        /// <summary>
+        ///     <para>
+        ///         Saves all changes made in this context to the database.
+        ///     </para>
+        ///     <para>
+        ///         This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
+        ///         changes to entity instances before saving to the underlying database. This can be disabled via
+        ///         <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
+        ///     </para>
+        ///     <para>
+        ///         Multiple active operations on the same context instance are not supported.  Use 'await' to ensure
+        ///         that any asynchronous operations have completed before calling another method on this context.
+        ///     </para>
+        /// </summary>
+        /// <param name="acceptAllChangesOnSuccess">
+        ///     Indicates whether <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AcceptAllChanges" /> is called after the changes have
+        ///     been sent successfully to the database.
+        /// </param>
+        /// <param name="cancellationToken"> A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete. </param>
+        /// <returns>
+        ///     A task that represents the asynchronous save operation. The task result contains the
+        ///     number of state entries written to the database.
+        /// </returns>
+        /// <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateException">
+        ///     An error is encountered while saving to the database.
+        /// </exception>
+        /// <exception cref="T:Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database.
+        ///     A concurrency violation occurs when an unexpected number of rows are affected during save.
+        ///     This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            SoftDelete();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
         /// <summary>
@@ -51,5 +120,26 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Context
                 modelBuilder.SetSoftDeleteFilter(entityType.ClrType);
             }
         }
+
+        #region privates
+        private void SoftDelete()
+        {
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                if (!(entry.Entity is ISoftDelete)) continue;
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.CurrentValues["IsDeleted"] = false;
+                        break;
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Modified;
+                        entry.CurrentValues["IsDeleted"] = true;
+                        entry.CurrentValues["DeletedOn"] = DateTime.UtcNow;
+                        break;
+                }
+            }
+        }
+        #endregion
     }
 }

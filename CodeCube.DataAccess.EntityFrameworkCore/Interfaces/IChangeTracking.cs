@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces
+namespace CodeCube.DataAccess.EntityFrameworkCore.Interfaces
 {
     /// <summary>
     /// Inherit your entities from this interface if you want to enable fields used for changetracking.

@@ -3,9 +3,10 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces;
+using CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Interfaces;
+using CodeCube.DataAccess.EntityFrameworkCore.Extensions;
 
-namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions
+namespace CodeCube.DataAccess.EntityFrameworkCore.Extensions
 {
     //Code taken from Phil Haacked > https://haacked.com/archive/2019/07/29/query-filter-by-interface/
     public static class ModelBuilderExtensions

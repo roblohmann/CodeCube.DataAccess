@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Interfaces
+namespace CodeCube.DataAccess.EntityFrameworkCore.Interfaces
 {
     /// <summary>
     /// Inherit from this interface on your entity to add properties used for soft-deletion.

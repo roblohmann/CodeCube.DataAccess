@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions
+namespace CodeCube.DataAccess.EntityFrameworkCore.Extensions
 {
     /// <summary>
     /// Class for DbContext extensions

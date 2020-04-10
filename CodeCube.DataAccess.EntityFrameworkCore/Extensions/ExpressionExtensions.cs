@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions
+namespace CodeCube.DataAccess.EntityFrameworkCore.Extensions
 {
     public static class ExpressionExtensions
     {
@@ -28,7 +28,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Extensions
 
             protected override Expression VisitLambda<T>(Expression<T> node)
             {
-                _parameters = VisitAndConvert<ParameterExpression>(node.Parameters, "VisitLambda");
+                _parameters = VisitAndConvert(node.Parameters, "VisitLambda");
                 return Expression.Lambda(Visit(node.Body), _parameters);
             }
         }

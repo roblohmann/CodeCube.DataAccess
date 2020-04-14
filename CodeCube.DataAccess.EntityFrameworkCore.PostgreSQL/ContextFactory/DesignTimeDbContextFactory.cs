@@ -16,6 +16,19 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory
     /// <typeparam name="TContext">The type of the context.</typeparam>
     public abstract class DesignTimeDbContextFactory<TContext> : IDesignTimeDbContextFactory<TContext> where TContext : DbContext
     {
+        /// <summary>
+        /// Reference to appsettings.json.
+        /// </summary>
+        protected readonly IConfiguration Configuration;
+
+        /// <summary>
+        /// Constructor for this factory class.
+        /// </summary>
+        public DesignTimeDbContextFactory()
+        {
+            Configuration = GetConfiguration();
+        }
+
         /// <summary>Creates a new instance of a derived context.</summary>
         /// <param name="args"> Arguments provided by the design-time service. </param>
         /// <returns> An instance of ApplicationDbContext.</returns>
@@ -24,9 +37,8 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory
             var connectionstring = GetConnectionstring();
 
             if (string.IsNullOrWhiteSpace(connectionstring))
-            {
-                IConfiguration configuration = GetAppConfiguration();
-                connectionstring = configuration.GetConnectionString("DatabaseConnection");
+            {  
+                connectionstring = Configuration.GetConnectionString("DatabaseConnection");
             }            
 
             if (string.IsNullOrWhiteSpace(connectionstring))
@@ -62,7 +74,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory
         protected abstract string GetConnectionstring();
 
         #region privates
-        private static IConfiguration GetAppConfiguration()
+        private static IConfiguration GetConfiguration()
         {
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 

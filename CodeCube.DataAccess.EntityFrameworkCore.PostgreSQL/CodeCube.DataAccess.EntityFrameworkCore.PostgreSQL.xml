@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>CodeCube.DataAccess.EntityFrameworkCore.Sql</name>
+        <name>CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL</name>
     </assembly>
     <members>
-        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory.DesignTimeDbContextFactory`1">
+        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory.DesignTimeDbContextFactory`1">
             <summary>
                 A factory for creating derived <see cref="T:Microsoft.EntityFrameworkCore.DbContext" /> instances. Inherit you context from this class to enable
                 design-time services for context types that do not have a public default constructor. At design-time,
@@ -14,29 +14,29 @@
             </summary>
             <typeparam name="TContext">The type of the context.</typeparam>
         </member>
-        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory.DesignTimeDbContextFactory`1.CreateDbContext(System.String[])">
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory.DesignTimeDbContextFactory`1.CreateDbContext(System.String[])">
             <summary>Creates a new instance of a derived context.</summary>
             <param name="args"> Arguments provided by the design-time service. </param>
             <returns> An instance of ApplicationDbContext.</returns>
         </member>
-        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory.DesignTimeDbContextFactory`1.CreateDbContext(System.String)">
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory.DesignTimeDbContextFactory`1.CreateDbContext(System.String)">
             <summary>Creates a new instance of a derived context.</summary>
             <param name="connectionstring">The connectionstring to the database.</param>
             <returns> An instance of ApplicationDbContext.</returns>
         </member>
-        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext">
+        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context.ApplicationDbContext">
             <summary>
             Inherit from this context to enable softdelete filtering.
             </summary>
         </member>
-        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.RemoveById``1(System.Guid)">
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context.ApplicationDbContext.RemoveById``1(System.Guid)">
             <summary>
             Deletes the entity with the specified id.
             </summary>
             <typeparam name="TEntity"></typeparam>
             <param name="id"></param>
         </member>
-        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.SaveChanges">
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context.ApplicationDbContext.SaveChanges">
             <summary>
                 <para>
                     Saves all changes made in this context to the database.
@@ -59,7 +59,7 @@
                 This is usually because the data in the database has been modified since it was loaded into memory.
             </exception>
         </member>
-        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context.ApplicationDbContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)">
             <summary>
                 <para>
                     Saves all changes made in this context to the database.
@@ -92,7 +92,7 @@
                 This is usually because the data in the database has been modified since it was loaded into memory.
             </exception>
         </member>
-        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
                 Override this method to further configure the model that was discovered by convention from the entity types
                 exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties on your derived context. The resulting model may be cached

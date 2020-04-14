@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using CodeCube.DataAccess.EntityFrameworkCore.Extensions;
 using CodeCube.DataAccess.EntityFrameworkCore.Interfaces;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.Extensions
@@ -28,24 +27,6 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Extensions
             {
                 builder.SetEntityQueryFilter(type, filterExpression);
             }
-        }
-        private static void SetQueryFilter<TEntity, TEntityInterface>(this ModelBuilder builder, Expression<Func<TEntityInterface, bool>> filterExpression)
-                where TEntityInterface : class
-                where TEntity : class, TEntityInterface
-        {
-            var concreteExpression = filterExpression.Convert<TEntityInterface, TEntity>();
-            builder.Entity<TEntity>().HasQueryFilter(concreteExpression);
-        }
-
-        private static readonly MethodInfo SetQueryFilterMethod = typeof(ModelBuilderExtensions)
-                .GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
-                .Single(t => t.IsGenericMethod && t.Name == nameof(SetQueryFilter));
-
-        private static void SetEntityQueryFilter<TEntityInterface>(this ModelBuilder builder, Type entityType, Expression<Func<TEntityInterface, bool>> filterExpression)
-        {
-            SetQueryFilterMethod
-                    .MakeGenericMethod(entityType, typeof(TEntityInterface))
-                    .Invoke(null, new object[] { builder, filterExpression });
         }
 
         /// <summary>
@@ -74,6 +55,25 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Extensions
         private static readonly MethodInfo SetSoftDeleteFilterMethod = typeof(ModelBuilderExtensions)
                 .GetMethods(BindingFlags.Public | BindingFlags.Static)
                 .Single(t => t.IsGenericMethod && t.Name == "SetSoftDeleteFilter");
+
+        private static void SetQueryFilter<TEntity, TEntityInterface>(this ModelBuilder builder, Expression<Func<TEntityInterface, bool>> filterExpression)
+        where TEntityInterface : class
+        where TEntity : class, TEntityInterface
+        {
+            var concreteExpression = filterExpression.Convert<TEntityInterface, TEntity>();
+            builder.Entity<TEntity>().HasQueryFilter(concreteExpression);
+        }
+
+        private static readonly MethodInfo SetQueryFilterMethod = typeof(ModelBuilderExtensions)
+                .GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
+                .Single(t => t.IsGenericMethod && t.Name == nameof(SetQueryFilter));
+
+        private static void SetEntityQueryFilter<TEntityInterface>(this ModelBuilder builder, Type entityType, Expression<Func<TEntityInterface, bool>> filterExpression)
+        {
+            SetQueryFilterMethod
+                    .MakeGenericMethod(entityType, typeof(TEntityInterface))
+                    .Invoke(null, new object[] { builder, filterExpression });
+        }
         #endregion
     }
 }

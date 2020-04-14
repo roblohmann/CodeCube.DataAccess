@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Constants;
-using CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Entities;
-using CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Extensions;
-using CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Interfaces;
+using CodeCube.DataAccess.EntityFrameworkCore.Constants;
+using CodeCube.DataAccess.EntityFrameworkCore.Entities;
+using CodeCube.DataAccess.EntityFrameworkCore.Extensions;
+using CodeCube.DataAccess.EntityFrameworkCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context

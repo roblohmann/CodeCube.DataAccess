@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CodeCube.DataAccess.EntityFrameworkCore.Sql.Constants;
+using CodeCube.DataAccess.EntityFrameworkCore.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;

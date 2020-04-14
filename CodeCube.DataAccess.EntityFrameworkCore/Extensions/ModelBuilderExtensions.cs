@@ -3,8 +3,8 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Interfaces;
 using CodeCube.DataAccess.EntityFrameworkCore.Extensions;
+using CodeCube.DataAccess.EntityFrameworkCore.Interfaces;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.Extensions
 {

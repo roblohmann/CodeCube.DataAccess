@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Constants;
+using CodeCube.DataAccess.EntityFrameworkCore.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -45,7 +45,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory
             }
 
             var builder = new DbContextOptionsBuilder<TContext>();
-            builder.UseSqlServer(connectionstring);
+            builder.UseNpgsql(connectionstring);
 
             var dbContext = (TContext)Activator.CreateInstance(typeof(TContext), builder.Options);
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CodeCube.DataAccess.EntityFrameworkCore.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +27,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory
 
             if (string.IsNullOrWhiteSpace(connectionString))
             {
-                throw new KeyNotFoundException(ErrorConstants.MissingConnectionstring);
+                throw new KeyNotFoundException(Constants.ErrorConstants.MissingConnectionstring);
             }
 
             return CreateDbContext(connectionString);
@@ -41,7 +40,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory
         {
             if (string.IsNullOrWhiteSpace(connectionstring))
             {
-                throw new KeyNotFoundException(ErrorConstants.MissingConnectionstring);
+                throw new KeyNotFoundException(Constants.ErrorConstants.MissingConnectionstring);
             }
 
             var builder = new DbContextOptionsBuilder<TContext>();

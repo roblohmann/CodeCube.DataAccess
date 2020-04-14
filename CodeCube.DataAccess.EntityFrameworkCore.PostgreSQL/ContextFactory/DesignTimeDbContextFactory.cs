@@ -19,28 +19,32 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory
         /// <summary>Creates a new instance of a derived context.</summary>
         /// <param name="args"> Arguments provided by the design-time service. </param>
         /// <returns> An instance of ApplicationDbContext.</returns>
-        public TContext CreateDbContext(string[] args)
+        public virtual TContext CreateDbContext(string[] args)
         {
-            IConfiguration configuration = GetAppConfiguration();
+            var connectionstring = GetConnectionstring();
 
-            var connectionString = configuration.GetConnectionString("DatabaseConnection");
+            if (string.IsNullOrWhiteSpace(connectionstring))
+            {
+                IConfiguration configuration = GetAppConfiguration();
+                connectionstring = configuration.GetConnectionString("DatabaseConnection");
+            }            
 
-            if (string.IsNullOrWhiteSpace(connectionString))
+            if (string.IsNullOrWhiteSpace(connectionstring))
             {
                 throw new KeyNotFoundException(Constants.ErrorConstants.MissingConnectionstring);
             }
 
-            return CreateDbContext(connectionString);
+            return CreateDbContext(connectionstring);
         }
 
         /// <summary>Creates a new instance of a derived context.</summary>
         /// <param name="connectionstring">The connectionstring to the database.</param>
         /// <returns> An instance of ApplicationDbContext.</returns>
-        public TContext CreateDbContext(string connectionstring)
+        public virtual TContext CreateDbContext(string connectionstring)
         {
             if (string.IsNullOrWhiteSpace(connectionstring))
             {
-                throw new KeyNotFoundException(Constants.ErrorConstants.MissingConnectionstring);
+                throw new KeyNotFoundException(Constants.ErrorConstants.ConnectionstringParameterRequired);
             }
 
             var builder = new DbContextOptionsBuilder<TContext>();
@@ -50,6 +54,12 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory
 
             return dbContext;
         }
+
+        /// <summary>
+        /// Method to retrieve the connectionstring. This is used by the factory to get the connectionstring while running migrations.
+        /// </summary>
+        /// <returns></returns>
+        protected abstract string GetConnectionstring();
 
         #region privates
         private static IConfiguration GetAppConfiguration()

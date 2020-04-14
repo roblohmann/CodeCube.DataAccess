@@ -24,6 +24,12 @@
             <param name="connectionstring">The connectionstring to the database.</param>
             <returns> An instance of ApplicationDbContext.</returns>
         </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory.DesignTimeDbContextFactory`1.GetConnectionstring">
+            <summary>
+            Method to retrieve the connectionstring. This is used by the factory to get the connectionstring while running migrations.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context.ApplicationDbContext">
             <summary>
             Inherit from this context to enable softdelete filtering.

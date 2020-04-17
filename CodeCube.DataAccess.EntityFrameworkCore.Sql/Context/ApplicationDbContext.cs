@@ -15,7 +15,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Context
     /// </summary>
     public abstract class ApplicationDbContext : DbContext
     {
-        protected ApplicationDbContext(DbContextOptions<DbContext> options) : base(options)
+        protected ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }

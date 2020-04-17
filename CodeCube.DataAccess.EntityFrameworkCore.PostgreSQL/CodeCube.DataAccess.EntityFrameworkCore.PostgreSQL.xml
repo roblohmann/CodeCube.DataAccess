@@ -14,6 +14,16 @@
             </summary>
             <typeparam name="TContext">The type of the context.</typeparam>
         </member>
+        <member name="F:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory.DesignTimeDbContextFactory`1.Configuration">
+            <summary>
+            Reference to appsettings.json.
+            </summary>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory.DesignTimeDbContextFactory`1.#ctor">
+            <summary>
+            Constructor for this factory class.
+            </summary>
+        </member>
         <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.ContextFactory.DesignTimeDbContextFactory`1.CreateDbContext(System.String[])">
             <summary>Creates a new instance of a derived context.</summary>
             <param name="args"> Arguments provided by the design-time service. </param>

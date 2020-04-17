@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeCube.DataAccess.EntityFrameworkCore.Entities
+namespace CodeCube.DataAccess.EntityFrameworkCore.Entities.SQL
 {
     public abstract class BaseEntity
     {

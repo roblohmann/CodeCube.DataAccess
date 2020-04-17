@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CodeCube.DataAccess.EntityFrameworkCore.Constants;
-using CodeCube.DataAccess.EntityFrameworkCore.Entities;
+using CodeCube.DataAccess.EntityFrameworkCore.Entities.SQL;
 using CodeCube.DataAccess.EntityFrameworkCore.Extensions;
 using CodeCube.DataAccess.EntityFrameworkCore.Interfaces;
 using Microsoft.EntityFrameworkCore;

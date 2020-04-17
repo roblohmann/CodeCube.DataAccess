@@ -22,16 +22,20 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
         /// <returns> An instance of ApplicationDbContext.</returns>
         public TContext CreateDbContext(string[] args)
         {
-            IConfiguration configuration = GetAppConfiguration();
+            var connectionstring = GetConnectionstring();
 
-            var connectionString = configuration.GetConnectionString("DatabaseConnection");
+            if (string.IsNullOrWhiteSpace(connectionstring))
+            {
+                IConfiguration configuration = GetAppConfiguration();
+                connectionstring = configuration.GetConnectionString("DatabaseConnection");
+            }
 
-            if (string.IsNullOrWhiteSpace(connectionString))
+            if (string.IsNullOrWhiteSpace(connectionstring))
             {
                 throw new KeyNotFoundException(ErrorConstants.MissingConnectionstring);
             }
 
-            return CreateDbContext(connectionString);
+            return CreateDbContext(connectionstring);
         }
 
         /// <summary>Creates a new instance of a derived context.</summary>
@@ -51,6 +55,12 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
 
             return dbContext;
         }
+
+        /// <summary>
+        /// Method to retrieve the connectionstring. This is used by the factory to get the connectionstring while running migrations.
+        /// </summary>
+        /// <returns></returns>
+        protected abstract string GetConnectionstring();
 
         #region privates
         private static IConfiguration GetAppConfiguration()

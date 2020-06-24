@@ -60,7 +60,10 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.ContextFactory
         /// Method to retrieve the connectionstring. This is used by the factory to get the connectionstring while running migrations.
         /// </summary>
         /// <returns></returns>
-        protected abstract string GetConnectionstring();
+        protected virtual string GetConnectionstring()
+        {
+            throw new NotImplementedException();
+        }
 
         #region privates
         private static IConfiguration GetAppConfiguration()

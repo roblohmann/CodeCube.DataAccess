@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <Authors>Rob Lohmann</Authors>
     <Company>Rob Lohmann</Company>
     <Description>Package containing extensions and interfaces usefull for working with EntityFrameworkCore.</Description>

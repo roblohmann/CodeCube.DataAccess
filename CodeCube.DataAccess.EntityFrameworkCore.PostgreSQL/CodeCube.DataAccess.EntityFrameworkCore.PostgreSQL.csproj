@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <Authors>Rob Lohmann</Authors>
     <Company>Rob Lohmann</Company>
     <Description>Package containing generic functionality to access databases using Microsoft EntityframeworkCore with PostgreSQL server</Description>
@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="1.0.201742" />
+    <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="1.0.203032" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
 
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.9" />

@@ -125,5 +125,18 @@
                 to a given database.
             </param>
         </member>
+        <member name="T:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Extensions.ModelBuilderExtensions">
+            <summary>
+            Class with extension methods on the EF Core ModelBuilder.
+            <emarks>PostgreSQL only!</emarks>
+            </summary>
+        </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Extensions.ModelBuilderExtensions.HasKeyUniqueIdentifier``1(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Define the Id property of the specified <typeparamref name="TEntity"/> as an UUID / Guid in the database.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="modelBuilder">The EF Core ModelBuilder</param>
+        </member>
     </members>
 </doc>

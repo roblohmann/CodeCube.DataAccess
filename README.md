@@ -1,8 +1,9 @@
 # CodeCube.DataAccess
 Library with repository pattern and helpers around Entity Framework and Entity Framework Core
 
-[![NuGet](https://img.shields.io/nuget/vpre/CodeCube.DataAccess.EntityFramework.svg)](https://www.nuget.org/packages/CodeCube.DataAccess.EntityFramework)
-[![NuGet](https://img.shields.io/nuget/dt/CodeCube.DataAccess.EntityFramework.svg)](https://www.nuget.org/packages/CodeCube.DataAccess.EntityFramework) 
+![Nuget](https://img.shields.io/nuget/dt/CodeCube.DataAccess.EntityFramework?style=for-the-badge)
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/CodeCube.DataAccess.EntityFramework?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/roblohmann/CodeCube.DataAccess.EntityFramework?style=for-the-badge)
 
 
 Set query filter on all entities.

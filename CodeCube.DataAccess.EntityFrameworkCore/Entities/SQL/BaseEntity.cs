@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.Entities.SQL
 {
@@ -12,6 +13,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Entities.SQL
         /// <summary>
         /// Used to prevent concurrency exceptions.
         /// </summary>
+        [ConcurrencyCheck]
         public byte[] RowVersion { get; set; }
     }
 }

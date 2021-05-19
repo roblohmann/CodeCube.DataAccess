@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.Entities.PostgreSQL
 {
@@ -12,6 +13,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Entities.PostgreSQL
         /// <summary>
         /// Used to prevent concurrency exceptions.
         /// </summary>
+        [ConcurrencyCheck]
         public DateTime RowVersion { get; set; }
     }
 }

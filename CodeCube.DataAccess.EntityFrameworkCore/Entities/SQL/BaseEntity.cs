@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CodeCube.DataAccess.EntityFrameworkCore.Entities.SQL
 {
@@ -14,6 +15,14 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Entities.SQL
         /// Used to prevent concurrency exceptions.
         /// </summary>
         [ConcurrencyCheck]
-        public byte[] RowVersion { get; set; }
+        [Obsolete("This property will be removed in a future version! Please use 'RowVersion' property!",false)]
+        public byte[] ConcurrencyValidationVersion { get; set; }
+
+        /// <summary>
+        /// Used to prevent concurrency exceptions.
+        /// </summary>
+        [ConcurrencyCheck]
+        [Column("xmin", TypeName = "xid")]
+        public long RowVersion { get; set; }
     }
 }

@@ -103,7 +103,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context
         /// <remarks>
         ///     If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
         ///     then this method will not be run.
-        ///     When overridden, don't forget to call base.OnModelCreating if you want the softdelete to keep working.
+        ///     When overridden, it is mandatory to call 'base.OnModelCreating()'!
         /// </remarks>
         /// <param name="modelBuilder">
         ///     The builder being used to construct the model for this context. Databases (and other extensions) typically

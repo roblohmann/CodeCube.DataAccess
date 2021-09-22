@@ -13,6 +13,11 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Interfaces
         bool IsDeleted { get; set; }
 
         /// <summary>
+        /// Which user / application deleted the object.
+        /// </summary>
+        string DeletedBy { get; set; }
+
+        /// <summary>
         /// When was the object deleted?
         /// </summary>
         DateTime? DeletedOn { get; set; }

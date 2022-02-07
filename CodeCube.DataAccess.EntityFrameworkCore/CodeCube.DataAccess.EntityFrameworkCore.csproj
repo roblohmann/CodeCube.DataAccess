@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,7 +6,7 @@
     <Company>Rob Lohmann</Company>
     <Description>
 		Package containing extensions and interfaces usefull for working with EntityFrameworkCore.
-		For .NETCore 3.x grab version 3.x or higher
+		For .NETCore 3.x grab version 1.x or higher
 		For .NET6 grab version 6.x or higher
 	</Description>
     <Copyright>Copyright 2020 - 2022 Rob Lohmann</Copyright>

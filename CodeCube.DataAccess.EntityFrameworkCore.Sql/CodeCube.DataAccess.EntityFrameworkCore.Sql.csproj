@@ -4,8 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <Authors>Rob Lohmann</Authors>
     <Company>Rob Lohmann</Company>
-    <Description>Package containing generic functionality to access databases using Microsoft EntityframeworkCore with SQL Server</Description>
-    <Copyright>Copyright 2019 - 2020 Rob Lohmann</Copyright>
+    <Description>
+		Package containing generic functionality to access databases using Microsoft EntityframeworkCore with SQL Server.
+		
+		For .NETCore 3.x grab version 1.x or higher
+		For .NET6 grab version 6.x or higher
+	</Description>
+    <Copyright>Copyright 2019 - 2022 Rob Lohmann</Copyright>
     <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
     <PackageId>CodeCube.DataAccess.EntityFrameworkCore.Sql</PackageId>
     <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
@@ -21,7 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="1.0.203032" />
+    <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="6.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
     
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />

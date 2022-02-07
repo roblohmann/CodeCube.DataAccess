@@ -14,6 +14,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+stages:
 - stage: Build
   displayName: 'Build and run tests'
   jobs:
@@ -53,10 +54,10 @@ pool:
         projects: '**/CodeCube.DataAccess.EntityFrameworkCore.Tests.csproj'
 - stage: 'NuGet'
   dependsOn: 'Build'
-  condition: 'and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))'
   jobs:
-  - job: ' NuGet'
+  - job: 'NuGet'
     displayName: 'Deploy NuGet'
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     steps:
     - task: NuGetCommand@2
       displayName: 'Push NuGet'

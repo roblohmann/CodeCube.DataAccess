@@ -23,6 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3C72E688
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCube.DataAccess.EntityFrameworkCore.Extensions", "CodeCube.DataAccess.EntityFrameworkCore.Extensions\CodeCube.DataAccess.EntityFrameworkCore.Extensions.csproj", "{D4F463D9-D4E9-45B2-A03A-15C55D3E6D2A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".azure-pipelines", ".azure-pipelines", "{8B07E6D6-969B-4F43-8FB9-01844B642742}"
+	ProjectSection(SolutionItems) = preProject
+		codecube-dataaccess-entityframeworkcore.yml = codecube-dataaccess-entityframeworkcore.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -25,6 +25,7 @@ stages:
     displayName: 'Build'
     steps:
     - task: Assembly-Info-NetCore@3
+      displayName: 'Set assembly version'
       inputs:
         Path: '$(Build.SourcesDirectory)'
         FileNames: '**/CodeCube.DataAccess.EntityFrameworkCore.csproj'
@@ -62,6 +63,12 @@ stages:
     displayName: 'Deploy NuGet'
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     steps:
+    - task: DotNetCoreCLI@2
+      displayName: 'Pack code'
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/CodeCube.DataAccess.EntityFrameworkCore.csproj.csproj'
+        versioningScheme: 'off'
     - task: NuGetCommand@2
       displayName: 'Push NuGet'
       inputs:

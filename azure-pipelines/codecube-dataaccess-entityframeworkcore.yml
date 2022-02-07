@@ -23,7 +23,7 @@ pool:
     - task: Assembly-Info-NetCore@3
       inputs:
         Path: '$(Build.SourcesDirectory)'
-        FileNames: '**/*.csproj'
+        FileNames: '**/CodeCube.DataAccess.EntityFrameworkCore.csproj'
         InsertAttributes: false
         FileEncoding: 'auto'
         WriteBOM: false
@@ -36,6 +36,12 @@ pool:
         LogLevel: 'verbose'
         FailOnWarning: false
         DisableTelemetry: false
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore NuGet Packages'
+      inputs:
+        command: 'restore'
+        projects: '**/CodeCube.DataAccess.EntityFrameworkCore.csproj'
+        feedsToUse: 'select'
     - task: DotNetCoreCLI@2
       inputs:
         command: 'build'

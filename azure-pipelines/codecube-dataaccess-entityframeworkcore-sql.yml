@@ -13,7 +13,7 @@ trigger:
  branches:
   include: 
     - master-net6
-  paths:
+ paths:
    include:
    - CodeCube.DataAccess.EntityFrameworkCore.Sql/*
 

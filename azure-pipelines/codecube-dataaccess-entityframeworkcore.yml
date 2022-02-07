@@ -67,7 +67,7 @@ stages:
       displayName: 'Pack code'
       inputs:
         command: 'pack'
-        packagesToPack: '**/CodeCube.DataAccess.EntityFrameworkCore.csproj.csproj'
+        packagesToPack: '**/CodeCube.DataAccess.EntityFrameworkCore.csproj'
         versioningScheme: 'off'
     - task: NuGetCommand@2
       displayName: 'Push NuGet'

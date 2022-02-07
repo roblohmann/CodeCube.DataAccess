@@ -13,6 +13,9 @@ trigger:
  branches:
   include: 
     - master-net6
+  paths:
+   include:
+   - CodeCube.DataAccess.EntityFrameworkCore/*
 
 pool:
   vmImage: ubuntu-latest

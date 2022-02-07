@@ -70,7 +70,7 @@ stages:
       displayName: 'Pack code'
       inputs:
         command: 'pack'
-        packagesToPack: '**/CodeCube.DataAccess.EntityFrameworkCore.Sql.csproj'
+        packagesToPack: '**/CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.csproj'
         versioningScheme: 'byBuildNumber'
     - task: NuGetCommand@2
       displayName: 'Push NuGet'

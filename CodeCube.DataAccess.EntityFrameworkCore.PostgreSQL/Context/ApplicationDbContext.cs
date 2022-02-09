@@ -113,12 +113,6 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             if (modelBuilder == null) throw new InvalidOperationException(ErrorConstants.ModelbuilderRequired);
-
-            var entitiesWithSoftdelete = modelBuilder.Model.GetEntityTypes().Where(t => typeof(ISoftDelete).IsAssignableFrom(t.ClrType));
-            foreach (var entityType in entitiesWithSoftdelete)
-            {
-                modelBuilder.SetSoftDeleteFilter(entityType.ClrType);
-            }
         }
 
         #region privates

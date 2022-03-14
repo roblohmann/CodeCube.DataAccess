@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Rob Lohmann</Authors>
     <Company>Rob Lohmann</Company>
     <Description>Package containing extensions and interfaces usefull for working with EntityFrameworkCore.</Description>
-    <Copyright>Copyright 2020 Rob Lohmann</Copyright>
+    <Copyright>Copyright 2020 - 2022 Rob Lohmann</Copyright>
     <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
     <PackageId>CodeCube.DataAccess.EntityFrameworkCore</PackageId>
     <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>

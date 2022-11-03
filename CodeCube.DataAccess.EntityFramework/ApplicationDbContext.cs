@@ -37,7 +37,7 @@ namespace CodeCube.DataAccess.EntityFramework
 
         /// <summary>
         /// Method to save stuff to the database.
-        /// </summary>
+        /// </summary>F
         public override int SaveChanges()
         {
             return SaveChanges(null);

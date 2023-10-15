@@ -1,0 +1,81 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+variables:
+- group: CodeCube.DataAccess.EntityFrameworkCore.SQL
+
+name: $(Version.Major).$(Version.Minor).$(Rev:r)
+
+trigger:
+ batch: true
+ branches:
+  include: 
+    - master-net6
+ paths:
+   include:
+   - CodeCube.DataAccess.EntityFrameworkCore.Sql/*
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: Build
+  displayName: 'Build and run tests'
+  jobs:
+  - job: Build
+    displayName: 'Build'
+    steps:
+    - task: Assembly-Info-NetCore@3
+      displayName: 'Set assembly version'
+      inputs:
+        Path: '$(Build.SourcesDirectory)'
+        FileNames: '**/CodeCube.DataAccess.EntityFrameworkCore.Sql.csproj'
+        InsertAttributes: false
+        FileEncoding: 'auto'
+        WriteBOM: false
+        PackageId: 'CodeCube.DataAccess.EntityFrameworkCore.Sql'
+        Authors: 'Rob Lohmann'
+        Copyright: 'Copyright 2020 - 2022 Rob Lohmann'
+        VersionNumber: '$(Build.BuildNumber)'
+        FileVersionNumber: '$(Build.BuildNumber)'
+        InformationalVersion: '$(Build.BuildNumber)'
+        LogLevel: 'verbose'
+        FailOnWarning: false
+        DisableTelemetry: false
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore NuGet Packages'
+      inputs:
+        command: 'restore'
+        projects: '**/CodeCube.DataAccess.EntityFrameworkCore.Sql.csproj'
+        feedsToUse: 'select'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        projects: '**/CodeCube.DataAccess.EntityFrameworkCore.Sql.csproj'
+        arguments: '-c Release'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'test'
+        projects: '**/CodeCube.DataAccess.EntityFrameworkCore.Sql.Tests.csproj'
+- stage: 'NuGet'
+  dependsOn: 'Build'
+  jobs:
+  - job: 'NuGet'
+    displayName: 'Deploy NuGet'
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: 'Pack code'
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/CodeCube.DataAccess.EntityFrameworkCore.Sql.csproj'
+        versioningScheme: 'byBuildNumber'
+    - task: NuGetCommand@2
+      displayName: 'Push NuGet'
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+        nuGetFeedType: 'external'
+        publishFeedCredentials: 'nuget.org'

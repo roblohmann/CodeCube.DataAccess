@@ -24,10 +24,19 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCube.DataAccess.EntityFrameworkCore.Extensions", "CodeCube.DataAccess.EntityFrameworkCore.Extensions\CodeCube.DataAccess.EntityFrameworkCore.Extensions.csproj", "{D4F463D9-D4E9-45B2-A03A-15C55D3E6D2A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".azure-pipelines", ".azure-pipelines", "{8B07E6D6-969B-4F43-8FB9-01844B642742}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net6", "net6", "{26873669-D8F5-43E1-876A-56A24E56A4F0}"
 	ProjectSection(SolutionItems) = preProject
-		azure-pipelines\codecube-dataaccess-entityframeworkcore-postgresql.yml = azure-pipelines\codecube-dataaccess-entityframeworkcore-postgresql.yml
-		azure-pipelines\codecube-dataaccess-entityframeworkcore-sql.yml = azure-pipelines\codecube-dataaccess-entityframeworkcore-sql.yml
-		azure-pipelines\codecube-dataaccess-entityframeworkcore.yml = azure-pipelines\codecube-dataaccess-entityframeworkcore.yml
+		azure-pipelines\net6\codecube-dataaccess-entityframeworkcore-postgresql.yml = azure-pipelines\net6\codecube-dataaccess-entityframeworkcore-postgresql.yml
+		azure-pipelines\net6\codecube-dataaccess-entityframeworkcore-sql.yml = azure-pipelines\net6\codecube-dataaccess-entityframeworkcore-sql.yml
+		azure-pipelines\net6\codecube-dataaccess-entityframeworkcore.yml = azure-pipelines\net6\codecube-dataaccess-entityframeworkcore.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net7", "net7", "{4BAD5106-3BB4-45BF-846A-E3F873160462}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines\net7\codecube-dataaccess-entityframeworkcore-postgresql.yml = azure-pipelines\net7\codecube-dataaccess-entityframeworkcore-postgresql.yml
+		azure-pipelines\net7\codecube-dataaccess-entityframeworkcore-sql.yml = azure-pipelines\net7\codecube-dataaccess-entityframeworkcore-sql.yml
+		azure-pipelines\net7\codecube-dataaccess-entityframeworkcore.yml = azure-pipelines\net7\codecube-dataaccess-entityframeworkcore.yml
 	EndProjectSection
 EndProject
 Global
@@ -66,6 +75,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DBFB4EE3-D301-43AA-92BD-4F38E2D20F1C} = {3C72E688-138C-4A19-A0CD-4626A413D641}
+		{26873669-D8F5-43E1-876A-56A24E56A4F0} = {8B07E6D6-969B-4F43-8FB9-01844B642742}
+		{4BAD5106-3BB4-45BF-846A-E3F873160462} = {8B07E6D6-969B-4F43-8FB9-01844B642742}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1152F6C2-18E3-4612-8258-EFC31AEA51E3}

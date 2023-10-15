@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Authors>Rob Lohmann</Authors>
     <Company>Rob Lohmann</Company>
     <Description>
@@ -9,8 +9,9 @@
 		
 		For .NETCore 3.x grab version 1.x or higher
 		For .NET6 grab version 6.x or higher
+		For .NET7 grab version 7.x or higher
 	</Description>
-    <Copyright>Copyright 2019 - 2022 Rob Lohmann</Copyright>
+    <Copyright>Copyright 2019 - 2023 Rob Lohmann</Copyright>
     <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
     <PackageId>CodeCube.DataAccess.EntityFrameworkCore.Sql</PackageId>
     <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CodeCube.DataAccess.EntityFrameworkCore.Constants;
 using CodeCube.DataAccess.EntityFrameworkCore.Entities.PostgreSQL;
-using CodeCube.DataAccess.EntityFrameworkCore.Extensions;
 using CodeCube.DataAccess.EntityFrameworkCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -89,10 +87,10 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context
         ///     A concurrency violation occurs when an unexpected number of rows are affected during save.
         ///     This is usually because the data in the database has been modified since it was loaded into memory.
         /// </exception>
-        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
             SoftDelete();
-            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+            return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
         /// <summary>
@@ -103,7 +101,7 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context
         /// <remarks>
         ///     If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
         ///     then this method will not be run.
-        ///     When overridden, don't forget to call base.OnModelCreating if you want the softdelete to keep working.
+        ///     When overridden, it is mandatory to call 'base.OnModelCreating()'!
         /// </remarks>
         /// <param name="modelBuilder">
         ///     The builder being used to construct the model for this context. Databases (and other extensions) typically
@@ -113,6 +111,12 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             if (modelBuilder == null) throw new InvalidOperationException(ErrorConstants.ModelbuilderRequired);
+
+            //var entitiesWithSoftdelete = modelBuilder.Model.GetEntityTypes().Where(t => typeof(ISoftDelete).IsAssignableFrom(t.ClrType));
+            //foreach (var entityType in entitiesWithSoftdelete)
+            //{
+                //modelBuilder.SetSoftDeleteFilter(entityType.ClrType);
+            //}
         }
 
         #region privates

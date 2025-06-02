@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
     <Authors>Rob Lohmann</Authors>
     <Company>Rob Lohmann</Company>
     <Description>Package containing generic functionality to access databases using Microsoft EntityframeworkCore with PostgreSQL server</Description>
-    <Copyright>Copyright 2020 Rob Lohmann</Copyright>
+    <Copyright>Copyright 2020 - 2025 Rob Lohmann</Copyright>
     <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
     <PackageId>CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL</PackageId>
     <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>

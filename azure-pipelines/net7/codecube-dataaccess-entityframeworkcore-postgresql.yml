@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 variables:
-- group: CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL
+- group: CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL7
 
 name: $(Version.Major).$(Version.Minor).$(Rev:r)
 
@@ -12,7 +12,7 @@ trigger:
  batch: true
  branches:
   include: 
-    - master-net6
+    - master-net7
  paths:
    include:
    - CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL/*
@@ -37,7 +37,7 @@ stages:
         WriteBOM: false
         PackageId: 'CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL'
         Authors: 'Rob Lohmann'
-        Copyright: 'Copyright 2020 - 2022 Rob Lohmann'
+        Copyright: 'Copyright 2020 - 2023 Rob Lohmann'
         VersionNumber: '$(Build.BuildNumber)'
         FileVersionNumber: '$(Build.BuildNumber)'
         InformationalVersion: '$(Build.BuildNumber)'

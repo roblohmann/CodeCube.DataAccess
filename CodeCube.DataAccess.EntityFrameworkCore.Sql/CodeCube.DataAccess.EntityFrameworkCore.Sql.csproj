@@ -4,7 +4,13 @@
         <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
         <Authors>Rob Lohmann</Authors>
         <Company>Rob Lohmann</Company>
-        <Description>Package containing generic functionality to access databases using Microsoft EntityframeworkCore with SQL Server</Description>
+        <Description>
+            Package containing generic functionality to access databases using Microsoft EntityframeworkCore with SQL Server.
+            
+            For .NETCore 3.x grab version 1.x or higher
+            For .NET6 grab version 6.x or higher
+            For .NET7 grab version 7.x or higher
+        </Description>
         <Copyright>Copyright 2019 - 2025 Rob Lohmann</Copyright>
         <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
         <PackageId>CodeCube.DataAccess.EntityFrameworkCore.Sql</PackageId>

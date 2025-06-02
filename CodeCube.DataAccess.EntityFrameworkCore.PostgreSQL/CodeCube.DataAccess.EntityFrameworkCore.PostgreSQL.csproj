@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-    <Authors>Rob Lohmann</Authors>
-    <Company>Rob Lohmann</Company>
-    <Description>Package containing generic functionality to access databases using Microsoft EntityframeworkCore with PostgreSQL server</Description>
-    <Copyright>Copyright 2020 - 2025 Rob Lohmann</Copyright>
-    <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
-    <PackageId>CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL</PackageId>
-    <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
-    <RepositoryUrl>https://github.com/roblohmann/CodeCube.DataAccess</RepositoryUrl>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+        <Authors>Rob Lohmann</Authors>
+        <Company>Rob Lohmann</Company>
+        <Description>Package containing generic functionality to access databases using Microsoft EntityframeworkCore with PostgreSQL server</Description>
+        <Copyright>Copyright 2020 - 2025 Rob Lohmann</Copyright>
+        <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
+        <PackageId>CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL</PackageId>
+        <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
+        <RepositoryUrl>https://github.com/roblohmann/CodeCube.DataAccess</RepositoryUrl>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DocumentationFile>CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.xml</DocumentationFile>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+        <DocumentationFile>CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.xml</DocumentationFile>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="3.0.223071" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+    <ItemGroup>
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="3.0.223071" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
 
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-  </ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    </ItemGroup>
 </Project>

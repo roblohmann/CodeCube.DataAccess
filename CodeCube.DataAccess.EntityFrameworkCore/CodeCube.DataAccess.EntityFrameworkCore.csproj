@@ -12,9 +12,24 @@
         <RepositoryUrl>https://github.com/roblohmann/CodeCube.DataAccess</RepositoryUrl>
     </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.32" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.32" />
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.36" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.36" />
     </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.20" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.16" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.16" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.5" />
+    </ItemGroup>    
 
 </Project>

@@ -22,11 +22,35 @@
         <DocumentationFile>CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL.xml</DocumentationFile>
     </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="3.0.223071" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="4.0.1" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.29" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="4.0.1" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.18" />
+
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="4.0.1" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="4.0.1" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
     </ItemGroup>
 </Project>

@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Authors>Rob Lohmann</Authors>
         <Company>Rob Lohmann</Company>
         <Description>Package containing extensions and interfaces usefull for working with EntityFrameworkCore.</Description>
-        <Copyright>Copyright 2020 - 2025 Rob Lohmann</Copyright>
+        <Copyright>Copyright 2020 - 2026 Rob Lohmann</Copyright>
         <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
         <PackageId>CodeCube.DataAccess.EntityFrameworkCore</PackageId>
         <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
@@ -30,6 +31,11 @@
     <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.5" />
-    </ItemGroup>    
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.5" />
+    </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
         <Authors>Rob Lohmann</Authors>
         <Company>Rob Lohmann</Company>
         <Description>
@@ -9,9 +9,10 @@
             
             For .NETCore 3.x grab version 1.x or higher
             For .NET6 grab version 6.x or higher
-            For .NET7 grab version 7.x or higher
+            For .NET7 and above, grab version 7.x or higher
         </Description>
-        <Copyright>Copyright 2020 - 2025 Rob Lohmann</Copyright>
+        <Copyright>Copyright 2020 - 2026 Rob Lohmann</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
         <PackageId>CodeCube.DataAccess.EntityFrameworkCore.PostgreSQL</PackageId>
         <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
@@ -23,7 +24,7 @@
     </PropertyGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="4.0.1" />
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="6.0.4" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.29" />
 
         <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
@@ -31,7 +32,7 @@
     </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="4.0.1" />
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="7.0.1" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.18" />
 
         <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
@@ -39,7 +40,7 @@
     </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
-        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="4.0.1" />
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.1" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
 
         <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
@@ -47,10 +48,18 @@
     </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="4.0.1" />
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.1" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
 
         <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
     </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
+        <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.2" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
+
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.5" />
+    </ItemGroup>    
 </Project>

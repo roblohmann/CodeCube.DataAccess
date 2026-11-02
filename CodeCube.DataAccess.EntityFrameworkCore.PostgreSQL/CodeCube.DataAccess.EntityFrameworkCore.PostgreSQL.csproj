@@ -30,7 +30,7 @@
         <!-- Patched transitive dependency of Npgsql EF Core 6 (GHSA-qj66-m88j-hmgj) -->
         <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.2" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
     </ItemGroup>
 
@@ -38,7 +38,7 @@
         <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="7.0.1" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.18" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
     </ItemGroup>
 
@@ -46,7 +46,7 @@
         <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.3" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
     </ItemGroup>
 
@@ -54,7 +54,7 @@
         <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.3" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.5" />
     </ItemGroup>
 

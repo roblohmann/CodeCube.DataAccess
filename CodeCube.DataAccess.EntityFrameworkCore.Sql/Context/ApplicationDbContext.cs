@@ -15,6 +15,10 @@ namespace CodeCube.DataAccess.EntityFrameworkCore.Sql.Context
     /// </summary>
     public abstract class ApplicationDbContext : DbContext
     {
+        /// <summary>
+        /// Initializes a new instance of the context with the provided options.
+        /// </summary>
+        /// <param name="options">The options for this context.</param>
         protected ApplicationDbContext(DbContextOptions options) : base(options)
         {
 

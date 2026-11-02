@@ -35,6 +35,12 @@
             Inherit from this context to enable softdelete filtering.
             </summary>
         </member>
+        <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Initializes a new instance of the context with the provided options.
+            </summary>
+            <param name="options">The options for this context.</param>
+        </member>
         <member name="M:CodeCube.DataAccess.EntityFrameworkCore.Sql.Context.ApplicationDbContext.RemoveById``1(System.Guid)">
             <summary>
             Deletes the entity with the specified id.

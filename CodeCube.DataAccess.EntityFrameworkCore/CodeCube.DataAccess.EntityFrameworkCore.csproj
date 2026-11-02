@@ -10,7 +10,7 @@
         <Copyright>Copyright 2020 - 2026 Rob Lohmann</Copyright>
         <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
         <PackageId>CodeCube.DataAccess.EntityFrameworkCore</PackageId>
-        <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
+        <PackageIcon>nuget-icon.png</PackageIcon>
         <RepositoryUrl>https://github.com/roblohmann/CodeCube.DataAccess</RepositoryUrl>
     </PropertyGroup>
 
@@ -38,5 +38,9 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.5" />
     </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../nuget-icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
 
 </Project>

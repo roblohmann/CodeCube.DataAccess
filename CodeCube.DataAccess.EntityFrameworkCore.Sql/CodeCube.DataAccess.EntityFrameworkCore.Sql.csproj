@@ -16,7 +16,7 @@
         <Copyright>Copyright 2019 - 2026 Rob Lohmann</Copyright>
         <PackageProjectUrl>https://github.com/roblohmann/CodeCube.DataAccess</PackageProjectUrl>
         <PackageId>CodeCube.DataAccess.EntityFrameworkCore.Sql</PackageId>
-        <PackageIconUrl>https://github.com/roblohmann/CodeCube.DataAccess/blob/master/nuget-icon.png?raw=true</PackageIconUrl>
+        <PackageIcon>nuget-icon.png</PackageIcon>
         <RepositoryUrl>https://github.com/roblohmann/CodeCube.DataAccess</RepositoryUrl>
     </PropertyGroup>
 
@@ -71,4 +71,8 @@
         <!-- Patched transitive dependency of Microsoft.Data.SqlClient (GHSA-846f-f764-76mx) -->
         <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.21" />
     </ItemGroup>
+  <ItemGroup>
+    <None Include="../nuget-icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+
 </Project>

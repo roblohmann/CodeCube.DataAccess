@@ -32,7 +32,7 @@
         <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.36" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.2" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.1" />
     </ItemGroup>
 
@@ -40,7 +40,7 @@
         <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.20" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
         <!-- Patched transitive dependency of Microsoft.Data.SqlClient (GHSA-wvxc-855f-jvrv, GHSA-m5vv-6r4h-3vj9; also lifts Microsoft.Identity.Client past GHSA-x674-v45j-fwxw) -->
         <PackageReference Include="Azure.Identity" Version="1.21.0" />
@@ -50,7 +50,7 @@
         <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.25" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
     </ItemGroup>
 
@@ -58,7 +58,7 @@
         <PackageReference Include="CodeCube.DataAccess.EntityFrameworkCore" Version="9.0.3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.14" />
 
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.14" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.14" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.14" />
     </ItemGroup>    
 
